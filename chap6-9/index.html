@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        //1
+        var a = 10;
+        document.write('<br> Result :')
+        document.write('<br> The value of a is : ' + a)
+
+        ++a
+        document.write('<br> The value of  ++a is : ' + a)
+        document.write('<br> The value of now a is : ' + a)
+        document.write('<br> The value of now a++ is  : ' + a)
+        a++
+
+        document.write('<br> The value of now a is  : ' + a)
+
+        --a
+        document.write('<br> The value of  --a is : ' + a)
+        document.write('<br> The value of now a is : ' + a)
+        document.write('<br> The value of  a-- is : ' + a)
+        a--
+
+        document.write('<br> The value of now a is : a' + a)
+
+
+        //2
+        var a = 2, b = 1;
+        var result = --a - --b + ++b + b--;
+        document.write(`
+
+<br>//first the --a =1<br>
+//then b also become --b=0<br>
+//then ++b become b=1<br>
+// then b-- will get one decreamnet after execution so b will be b=1<br>
+// s0 resullt=1-0+1+1=3`)
+        document.write('<br> ' + result)
+        //3
+
+        var name = prompt('Enter Your Name')
+        document.write('<br> hello ' + name)
+
+        //4
+
+        var tableNum = +prompt('enter number')
+        if (tableNum == '') {
+            tableNum = 5
+
+            document.write('<br>' + tableNum + ' x ' + 1 + ' = ' + tableNum * 1)
+            document.write('<br>' + tableNum + ' x ' + 2 + ' = ' + tableNum * 2)
+            document.write('<br>' + tableNum + ' x ' + 3 + ' = ' + tableNum * 3)
+            document.write('<br>' + tableNum + ' x ' + 4 + ' = ' + tableNum * 4)
+            document.write('<br>' + tableNum + ' x ' + 5 + ' = ' + tableNum * 5)
+            document.write('<br>' + tableNum + ' x ' + 6 + ' = ' + tableNum * 6)
+            document.write('<br>' + tableNum + ' x ' + 7 + ' = ' + tableNum * 7)
+            document.write('<br>' + tableNum + ' x ' + 8 + ' = ' + tableNum * 8)
+            document.write('<br>' + tableNum + ' x ' + 9 + ' = ' + tableNum * 9)
+        }
+        else {
+            document.write('<br>' + tableNum + ' x ' + 1 + ' = ' + tableNum * 1)
+            document.write('<br>' + tableNum + ' x ' + 2 + ' = ' + tableNum * 2)
+            document.write('<br>' + tableNum + ' x ' + 3 + ' = ' + tableNum * 3)
+            document.write('<br>' + tableNum + ' x ' + 4 + ' = ' + tableNum * 4)
+            document.write('<br>' + tableNum + ' x ' + 5 + ' = ' + tableNum * 5)
+            document.write('<br>' + tableNum + ' x ' + 6 + ' = ' + tableNum * 6)
+            document.write('<br>' + tableNum + ' x ' + 7 + ' = ' + tableNum * 7)
+            document.write('<br>' + tableNum + ' x ' + 8 + ' = ' + tableNum * 8)
+            document.write('<br>' + tableNum + ' x ' + 9 + ' = ' + tableNum * 9)
+        }
+
+
+
+        //6
+        let sub1 = prompt('ENter suject1')
+        let sub2 = prompt('ENter suject2')
+        let sub3 = prompt('ENter suject3')
+
+        let totalMarks = 100;
+        let mark1 = +prompt('ENter suject1 marks')
+        let mark2 = +prompt('ENter suject2 marks')
+        let mark3 = +prompt('ENter suject3 marks')
+        let p1 = (mark1 / totalMarks) * 100
+        let p2 = (mark2 / totalMarks) * 100
+        let p3 = (mark3 / totalMarks) * 100
+        let totalper = ((mark1 + mark2 + mark3) / 300) * 100;
+
+
+        document.write(`
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Total Marks</th>
+                    <th>Obtained Marks</th>
+                    <th>Percetage</th>
+                </tr>
+                <tr>
+                    <td>${sub1}</td>
+                    <td>${totalMarks}</td>
+                    <td>${mark1}</td>
+                    <td>${p1}%</td>
+                </tr>
+                <tr>
+                    <td>${sub2}</td>
+                    <td>${totalMarks}</td>
+                    <td>${mark2}</td>
+                    <td>${p2}%</td>
+                </tr>
+                <tr>
+                    <td>${sub3}</td>
+                    <td>${totalMarks}</td>
+                    <td>${mark3}</td>
+                    <td>${p3}%</td>
+                </tr>
+               
+            </table>
+            <p>total perncetage is ${totalper} %</p>
+           
+        `)
+
+
+    </script>
+</body>
+
+</html>

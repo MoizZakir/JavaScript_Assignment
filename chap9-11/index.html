@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    //1
+    const cityName = prompt("Enter the city name:");
+
+
+    if (cityName === "karachi") {
+      alert("Welcome to the city of lights");
+    } else {
+      alert("Welcome to " + cityName);
+    }
+    //2
+
+    const gender = prompt("Enter your gender (male/female):");
+
+
+    if (gender === "male") {
+      alert("Good Morning Sir.");
+    } else if (gender === "female") {
+      alert("Good Morning Ma'am.");
+    } else {
+      alert("Good Morning!"); // Default message if gender is neither "male" nor "female"
+    }
+    //3
+    const color = prompt("Enter the color name:");
+
+
+    if (color === "red") {
+      alert("Must stop");
+    }
+    else if (color === "yellow") {
+      alert("ready to move");
+    }
+    else if (color == 'green') {
+      alert('move now')
+
+
+    }
+    //4
+
+    var litr = +prompt('How much petrol You have')
+    if (litr < 0.25) {
+      alert('Please refill the fuel in your car ')
+    }
+    //5
+
+
+    // var z = 4;
+    // if (++z === 5){
+    // alert("given condition for variable a is true");
+    // } 
+
+    // var b = 82;
+    // if (b++ === 83){
+    // alert("given condition for variable b is true");
+    // }
+
+    // var c = 12;
+    // if (c++ === 13){
+    // alert("condition 1 is true");
+    // }
+    // if (c === 13){
+    // alert("condition 2 is true");
+    // }
+    // if (++c < 14){
+    // alert("condition 3 is true");
+    // }
+    // if(c === 14){
+    // alert("condition 4 is true");
+    // }
+
+    // var materialCost = 20000;
+    // var laborCost = 2000;
+    // var totalCost = materialCost + laborCost;
+    // if (totalCost === laborCost + materialCost){
+    // alert("The cost equals");
+    // }
+
+    // if (true){
+    // alert("True");
+    // }
+    // if (false){
+    // alert("False");
+    // }
+
+
+    // if("car" < "cat"){
+    // alert("car is smaller than cat");
+    // }
+
+    //6
+
+    var subj1 = +prompt('Enter first subject Marks ')
+    var subj2 = +prompt('Enter second subject Marks ')
+    var subj3 = +prompt('Enter third subject Marks ')
+
+    var totalMarks = 300;
+    var obtainMarks = subj1 + subj2 + subj3;
+    var percentage = (obtainMarks / totalMarks) * 100;
+    document.write(`<h1>Marks Sheet</h1><br>`);
+    if (percentage >= 80) {
+      document.write(`
+    Total marks: ${totalMarks} <br>
+    Marks obtained: ${obtainMarks}<br>
+    Percentage: ${percentage}%<br>
+    Grade: A-one<br>
+    Remarks : Excellent<br>
+    
+    
+    `)
+
+    }
+
+    else if (percentage >= 70) {
+      document.write(`
+    Total marks: ${totalMarks} <br>
+    Marks obtained: ${obtainMarks}<br>
+    Percentage: ${percentage}%<br>
+    Grade: A <br>
+    Remarks : Good <br>
+    
+    
+    `)
+    }
+    else if (percentage >= 60) {
+      document.write(`
+    Total marks: ${totalMarks} <br>
+    Marks obtained: ${obtainMarks}<br>
+    Percentage: ${percentage}%<br>
+    Grade: B <br>
+    Remarks : You Need To Improve <br>
+    
+    
+    `)
+    }
+    else {
+      document.write(`
+    Total marks: ${totalMarks} <br>
+    Marks obtained: ${obtainMarks}<br>
+    Percentage: ${percentage}%<br>
+    Grade: Fail <br>
+    Remarks : Sorry <br>
+    
+    
+    `)
+
+      //7
+
+      let secretNumber = 5;
+
+
+      let userGuess = +prompt("Guess the secret number (between 1 and 10):");
+
+
+      if (userGuess === secretNumber) {
+        alert("Bingo! Correct answer");
+      } else if (secretNumber - userGuess === 1) {
+        alert("Close enough to the correct answer");
+      } else {
+        alert("Sorry, that's not correct.");
+      }
+
+
+
+    }
+
+    //8
+    var divnNum = +prompt("Give any Number")
+    if ((divnNum % 3) === 0) {
+      alert("Yes it, is divisible by 3")
+    }
+    else {
+      alert('Sorry')
+    }
+
+    //9
+
+    let user = +prompt("Enter a number:");
+
+
+    if (user % 2 === 0) {
+      console.log(`${user} is an even number`);
+    } else {
+      console.log(`${user} is an odd number.`);
+    }
+
+    //10
+
+    // Prompt the user to enter the temperature
+    let temp = +prompt("Enter the temperature:");
+
+    // Check the temperature and display a message based on the criteria
+    if (temp > 40) {
+      aler("It is too hot outside.");
+    } else if (temp > 30) {
+      aler("The Weather today is Normal.");
+    } else if (temp > 20) {
+      aler("Today’s Weather is cool.");
+    } else if (temp > 10) {
+      aler("OMG! Today’s weather is so Cool.");
+    } else {
+      aler("It is freezing outside.");
+    }
+
+
+  </script>
+
+</body>
+
+</html>

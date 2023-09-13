@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        //2
+
+        var num1 = +prompt('Enter First number')
+        var num2 = +prompt('Enter Second number')
+        if (num1 > num2) {
+            document.write(num1 + '<br>')
+        }
+        else if (num2 > num1) {
+            document.write(num2 + '<br>')
+        }
+        else {
+            document.write('Both are Equal ' + num1 + ' = ' + num2 + '<br>')
+        }
+
+        //3
+
+        var num3 = +prompt('Enter any number')
+
+        if (num3 >= 1) {
+            document.write(num3 + ' is Positive Number <br>')
+        }
+        else if (num3 < 0) {
+            document.write(num3 + ' is Negative Number <br>')
+        }
+        else {
+            document.write('Number is 0 <br> ')
+        }
+        //4
+        var vovels = ['a', 'e', 'i', 'o', 'u']
+        var charaCter = prompt('Write a character')
+        var bol = 1
+        for (let i = 0; i <= vovels.length; i++) {
+            console.log(i)
+
+            if (charaCter === vovels[i]) {
+                bol = 0
+                break
+
+            }
+
+        }
+        if (bol == 0) {
+            alert("given Character is vovel")
+        }
+        else {
+            alert("Given Character is not  vovel")
+        }
+
+
+        //5
+
+        var pass1 = prompt('Please save your Password')
+        if (pass1 == "") {
+            alert('please Save the password')
+        }
+        else {
+            var pass2 = prompt('Enter  your Password')
+            if (pass1 == pass2) {
+                alert("Correct! The password you entered matches the original password")
+            }
+            else {
+                alert("Incorrect Password")
+            }
+
+        }
+
+        //6
+
+        var greeting;
+        var hour = 13;
+        if (hour < 18) {
+            greeting = "Good day";
+        }
+        else {
+            greeting = "Good evening";
+        }
+
+        //7
+        var time = prompt('Enter Time Like this (1900)')
+
+        if (time >= 0 && time < 1200) {
+            alert('Good Morning')
+
+        }
+
+        else if (time >= 1200 && time < 1700) {
+            alert('Good afternoon')
+        }
+
+        else if (time >= 1700 && time < 2100) {
+            alert('Good Evening')
+        }
+        else if (time >= 2100 && time < 2359) {
+            alert('Good night')
+
+        }
+    </script>
+</body>
+
+</html>

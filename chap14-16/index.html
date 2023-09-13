@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+//1-6
+
+        let studentNamesLiteral = [];
+        let studentNamesObject = new Array();
+
+
+
+
+        let numbersArray = [1, 2, 3, 4, 5];
+        let stringsArray = ["apple", "banana", "cherry", "date"];
+        let booleanArray = [true, false, true, false];
+        let mixedArray = ["apple", 123, true, "banana", 456, false];
+//
+
+
+//7
+        let qualifications = ["SSC", "HSC", "BCS", "BS", "BCOM", "MS", "M. Phil.", "PhD"];
+
+        document.write('QUALIFICATION <BR>')
+        for (let i = 0; i < qualifications.length; i++) {
+
+            document.write(`${i + 1}) ${qualifications[i]} <br>`)
+
+        }
+
+
+
+        //8
+        let student_name = ['michel', 'john', 'tony']
+        let scores = [320, 230, 480]
+        totalMarks = 500
+
+        for (let i = 0; i < student_name.length; i++) {
+
+
+            var percentage = (scores[i] / 500) * 100
+
+            document.write(`Score of ${student_name[i]} is ${scores[i]} . Percentage is ${percentage}% <br>`)
+        }
+
+
+        //9
+        let colorName = [];
+        document.write(colorName + '<br>')
+
+
+        let a=prompt("what color do You want to add in the begninig")
+        colorName.unshift(a);
+        document.write(colorName+'<br>')
+        let b=prompt("what color do You want to add at the end")
+        colorName.push(b)
+
+        document.write(colorName+'<br>')
+        colorName.unshift('black','purple')
+        document.write(colorName+'<br>')
+        colorName.shift()
+        document.write(colorName+'<br>')
+        colorName.pop()
+        document.write(colorName+'<br>')
+
+        let c=+prompt("enter the index number where you want to add color")
+        let d=prompt('Enter the color name')
+        colorName[c]=d;
+        document.write(colorName+'<br>')
+
+        let e=+prompt("Enter the index number from you want to delete")
+        let f=+prompt('Enter How many element You want to delte')
+        colorName.splice(e,f)
+        document.write(colorName+'<br>')
+
+
+        ///10
+
+
+
+        let studScores=[320,230,480,120]
+        studScores.sort()
+        document.write(studScores +'<br>')
+
+
+
+        ///11
+
+
+        let cities=['karachi','lahore','islamabad','quetta','peshawar']
+        let selectedCities=cities.slice(2,4)
+        document.write(selectedCities+'<br>')
+
+
+        ///12
+
+
+        
+
+var joinarr = ["This", "is", "my", "cat"];
+
+var eachString = joinarr.join(" ");
+document.write(eachString+'<br>')
+
+
+///13
+
+
+let fifo=[]
+fifo.push('Keyboard')
+fifo.push('Mouse')
+fifo.push('Printer')
+fifo.push('Monitor')
+
+
+for (let i=0;i<fifo.length;i++){
+
+   document.write(fifo[i]+'<br>')
+}
+
+
+//14
+let lifo=[]
+lifo.unshift('Keyboard')
+lifo.unshift('Mouse')
+lifo.unshift('Printer')
+lifo.unshift('Monitor')
+for (let i=0;i<lifo.length;i++){
+
+document.write(lifo[i]+'<br>')
+}
+
+
+//15
+
+var phoneManufacturers = ["Apple", "Samsung", "Motorola", "Nokia", "Sony", "Haier"];
+
+        
+        document.write("<h1>Phone Manufacturers</h1>");
+        document.write('<select>');
+
+        for (var i = 0; i < phoneManufacturers.length; i++) {
+            document.write('<option value="' + phoneManufacturers[i] + '">' + phoneManufacturers[i] + '</option>');
+        }
+
+        document.write('</select>');
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

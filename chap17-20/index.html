@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        //1
+
+        let multiDimArr = [[]];
+
+        //2
+        let dimArr = [[0, 1, 2, 3], [1, 0, 1, 2], [2, 1, 0, 2]]
+        for (let i = 0; i <= dimArr.length; i++) {
+            document.write(dimArr[i] + '<br>')
+        }
+
+
+        ///3
+        for (let i = 1; i <= 10; i++) {
+            document.write(i + ' <br>')
+        }
+
+
+        //4
+        let multplunum = +prompt('Enter the number for your table ')
+        let multpllen = +prompt('Enter the length for your table ')
+
+        for (let i = 1; i <= multpllen; i++) {
+            document.write(`${multplunum} X ${i} = ${multplunum * i} <br>`)
+        }
+
+        //5
+        let fruits = ['apple', 'banana', 'mango', 'orange', 'strawberry']
+        for (let i = 0; i < fruits.length; i++) {
+            document.write(fruits[i] + '<br>')
+
+        }
+
+        //6
+
+        for (let i = 1; i <= 15; i++) {
+
+
+            document.write(i + '  ')
+        }
+
+        document.write('<br>')
+
+        for (let i = 10; i >= 1; i--) {
+
+
+            document.write(i + '  ')
+        }
+
+
+        document.write('<br>')
+        let count = 0;
+
+        for (let i = 0; i <= 10; i++) {
+
+
+            document.write(count + '  ')
+            count = count + 2
+        }
+
+        document.write('<br>')
+        for (let i = 0; i <= 20; i++) {
+            if (i % 2 == 0) {
+
+            }
+            else {
+                document.write(i + '  ')
+            }
+
+
+
+        }
+
+
+        document.write('<br>')
+        let series = 2;
+
+        for (let i = 0; i <= 9; i++) {
+
+
+            document.write(series + 'K  ')
+            series = series + 2
+        }
+        //7
+
+        let backerItem = ['cake', 'apple pie', 'cookie', 'chips', 'patties']
+        let search = prompt("Welcome to our bakery ,What do you want")
+
+        var bol = 0
+        let index;
+        for (let i = 0; i <= backerItem.length; i++) {
+            if (search == backerItem[i]) {
+                index = i
+                bol = 1
+            }
+        }
+        if (bol == 1) {
+            alert(search + ' is Available at index ' + index + ' in our Bakery')
+        }
+        else {
+            alert('We are soory. ' + search + " is not available in our backery ")
+        }
+
+        //8
+
+        let largeArray = [24, 53, 78, 91, 12]
+        let compare = 0
+        for (let i = 0; i <= largeArray.length; i++) {
+
+            if (compare < largeArray[i]) {
+                compare = largeArray[i];
+
+            }
+
+        }
+        document.write('<br>' + compare)
+
+        //9
+
+
+
+
+
+        let smallArray = [24, 53, 78, 91, 12, 5]
+        let Comp = 0
+        for (let i = 0; i <= smallArray.length; i++) {
+
+            if (!Comp < smallArray[i]) {
+                Comp = smallArray[i];
+
+            }
+
+
+        }
+
+        document.write('<br>' + Comp)
+
+
+
+        document.write("<br>")
+
+
+
+        //10
+
+
+        for (let i = 1; i <= 100; i++) {
+
+            if (i % 5 == 0) {
+                document.write(i + '  ')
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
