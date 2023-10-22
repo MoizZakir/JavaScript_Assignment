@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#nav{
+    background-color: rgb(230, 230, 230);
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+button{
+    width: 60px;
+    background: none;
+    border: none;
+}
+.tranform{
+    transition: all;
+    transition-duration: 0.3s;
+    transform: translateX(-500px);
+}
+.againtransform{
+    transform: translateX(0px);
+}
+.sidebar{
+    position: absolute;
+   
+    top:0;
+    width: 400px;
+    margin-top: 20px;
+    height: 330px;
+    background-color: rgb(172, 160, 160); ;
+}
+button:active{
+    color: green;
+}
+li:hover{
+    background-color: black;
+    color: white;
+}
+li{
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 19px;
+}
