@@ -15,7 +15,7 @@
 }
 .modal{
     width: 40%;
-    height: 50vh;
+    height:fit-content;
     background-color: beige;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@ p{
 }
 #btn2{
     position: relative;
-    left: 48%;
+    left: 45%;
     background: none;
     border: none;
     color: red;
@@ -41,6 +41,9 @@ p{
 }
 .visibleflex{
     display: flex;
+}
+.visible{
+    display: block;
 }
 .hidden{
     display: none;

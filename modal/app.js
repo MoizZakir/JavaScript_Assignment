@@ -7,5 +7,14 @@ function displayHandler(){
     modal.classList.add('visibleflex')
     modal.classList.remove('hidden')
     button1.classList.add('hidden')
+    main1.style.backgroundColor='grey'
+  
+}
+function hiddenHandler(){
+
+    modal.classList.add('hidden')
+    button1.classList.add('visible')
+    button1.classList.remove('hidden')
+    main1.style.backgroundColor='white'
   
 }
