@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+#head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+.forbtn{
+    margin-top: 12px;
+}
+.mybtns{
+    margin-left: 10px;
+    color: orange;
+    background: none;
+    border: 1px solid orange;
+    padding:3px;
+
+}
+.bor{
+    border: 1px solid red;
+}
+.mybtns:hover{
+    background-color: orange;
+    color: white;
+}
+#content{
+    margin-top: 20px;
+display: flex;
+justify-content: center;
+}
+.menues{
+    width: 70%;
+    display: flex;
+    flex-wrap:wrap;
+}
+.food{
+    width: 50%;
+    display: flex;
+    padding: 10px;
+}
+.food img{
+    width: 200px;
+    height: 140px;
+    border-radius: 5px;
+    border: 1px solid orange;
+}
+.side{
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+.side div{
+    border-bottom: 1px solid orange;
+    padding-bottom: 7px;
+}
+.side p{
+    margin-top: 5px;
+}
