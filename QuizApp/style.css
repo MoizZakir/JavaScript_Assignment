@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#head{
+    display: flex;
+    justify-content:space-between;
+    padding-top: 15px;
+    padding-left: 18px;
+    padding-right: 15px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    height: 90px;
+    position: relative;
+}
+.container{
+    height:max-content;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.centeritems{
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500px;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    
+}
+.container button{
+    cursor: pointer;
+    background: white;
+    border: none;
+    margin: 30px;
+    text-align: justify;
+    display: flex;
+    
+    
+}
+.container button img{
+    width: 35px;
+    margin-left: 10px;
+}
+.container button p{
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.end{
+  
+ padding-top: 50px;
+ padding-bottom: 50px;
+ 
+ font-weight: 600;
+ font-family: 'Edu SA Beginner', cursive;
+ font-family: 'Josefin Sans', sans-serif;
+
+}
+.end p{
+    color: black;
+}
+.end a{
+    color: #0d6db7;
+    text-decoration: none;
+}
