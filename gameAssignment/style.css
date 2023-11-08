@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#again{
+    padding: 5px 20px;
+    font-size: 1.1rem;
+    border: none;
+    margin-left: 8px;
+}
+#head{
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+#head h4{
+    color: white;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+h1{
+    letter-spacing: 10px;
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+}
+#line{
+    margin-top: 100px;
+    height: 2px;
+    background-color: white;
+}
+#find{
+    position: relative;
+    left: 44%;
+    top: -33px;
+    height: 70px;
+    width: 100px;
+    background-color: white;
+    color:black;
+    text-align: center;
+    padding: 10px;
+    font-size: 2.5rem;
+}
+#main{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-around;
+}
+#firstportion{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#firstportion input{
+    border: 1px solid white;
+    background: none;
+    width: 150px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#firstportion button{
+    padding: 5px 20px;
+    font-size: 1.1rem;
+    border: none;
+    width: 100px;
+
+    margin-left: 25px;
+    margin-top: 12px;
+}
+
+#secondportion p{
+    color: white;
+    font-size: 25px;
+}
+#paras{
+  margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    
+}
+#paras p{
+    margin-top: 12px;
+}
