@@ -156,10 +156,17 @@ const quizQuestions = [
         type: "JavaScript",
       },
   ];
+
+  
+let timer=document.getElementById('timer')
+
+
+timer.style.display='none'
 let requiredQuestion=[];
 let quizTypeOption=document.getElementById('quizType')
 let myValues=[]
-requiredQuestion.splice(0,requiredQuestion.length)
+
+
 
 quizQuestions.forEach((e)=>{
   if(!myValues.includes(e.type)){
@@ -172,20 +179,27 @@ myValues.forEach((myType)=>{
 quizTypeOption.innerHTML+=optionValue
 
 })
+
 quizTypeOption.addEventListener('change', function CallHandler() {
+  requiredQuestion.splice(0,requiredQuestion.length)
   quizQuestions.filter((myData)=>{
+
+    // if (requiredQuestion.length>0){
+    //   requiredQuestion.pop()
+    // }
     
   if(myData.type.includes(quizTypeOption.value)){
     
-    
+   
     
  
         requiredQuestion.push(myData)
         
     
     
-  return true
+  
 }
+
 else{
   return false
 }})
@@ -205,45 +219,67 @@ function backHome(){
 
 }
 
+let nextBtn=document.getElementById('next')
+let min=document.getElementsByTagName('h4')
+let username=document.querySelector('#username')
 let resultMarks=document.getElementById('forResult')
 let fistWindow=document.getElementById("firstwindow")
+let uname=document.getElementById('uname')
 let count=0
 let score=0
-let marks=((score)*100)
-
+let marks=100
+nextBtn.style.display='none'
 function thanks(){
-  resultMarks.innerHTML=`You Got ${marks}%`
+  resultMarks.innerHTML=`You Got ${(score/requiredQuestion.length)*marks}%`
+  uname.style.display='none'
   back_home.style.display='block'
 main.style.display='none'
 nextBtn.style.display='none'
+timer.style.display='none'
+console.log(score)
 
 }
   let main=document.getElementById('main')
-  let nextBtn=document.getElementById('next')
+
   nextBtn.style.display='none'
+
+  function checkCheat(){
+    window.addEventListener('visibilitychange',function(){
+      checkCheating=false
+  
+  if(document.visibilityState=='hidden'){
+  thanks()
+  }
+  }) 
+  }
   function moiz(){
+    timer.style.display='flex'
+    let count2=count+1
+ 
     console.log(requiredQuestion)
+    console.log(username.value)
+   
       let myhtml=`<div id="page">
-    <h2>Question: <span style="font-weight: 500; font-size: 1.3rem;">${requiredQuestion[count].question}</span></h2>
+    <h2>Question ${count2}: <span style="font-weight: 500; font-size: 1.3rem;">${requiredQuestion[count].question}</span></h2>
     
-    <div style="padding-top: 35px; margin-left: 20px;">
+    <div style="padding-top: 19px; margin-left: 20px;">
        <div style="display: flex;"><input class="checkbtn" value='${requiredQuestion[count].options[0]}'  type="checkbox">
-       <p>${requiredQuestion[count].options[0]} </p></div>
+       <p>${requiredQuestion[count].options[0]}. </p></div>
      
     </div>
-    <div style="padding-top: 35px; margin-left: 20px;">
+    <div style="padding-top: 19px; margin-left: 20px;">
         <div style="display: flex;"><input class="checkbtn" value='${requiredQuestion[count].options[1]}' type="checkbox">
         <p>${requiredQuestion[count].options[1]} </div>
       
      </div>
-     <div style="padding-top: 35px; margin-left: 20px;">
+     <div style="padding-top: 19px; margin-left: 20px;">
         <div style="display: flex;"><input class="checkbtn" value='${requiredQuestion[count].options[2]}'  type="checkbox">
-        <p>${requiredQuestion[count].options[2]} </p></div>
+        <p>${requiredQuestion[count].options[2]}. </p></div>
       
      </div>
-     <div style="padding-top: 35px; margin-left: 20px;">
+     <div style="padding-top: 19px; margin-left: 20px;">
         <div style="display: flex;"><input class="checkbtn" value='${requiredQuestion[count].options[3]}'  type="checkbox">
-        <p>${requiredQuestion[count].options[3]} </p></div>
+        <p>${requiredQuestion[count].options[3]}. </p></div>
       
      </div>
     </div>`
@@ -256,7 +292,7 @@ nextBtn.style.display='none'
        checks.addEventListener('change',function(){
          let myCount=count-1
         if(requiredQuestion[myCount].correctAnswer==this.value){
-          score+=10
+          score+=1
           console.log(requiredQuestion[myCount].correctAnswer==this.value)
           console.log(checks.value)
           console.log(requiredQuestion[myCount].correctAnswer)
@@ -267,6 +303,7 @@ nextBtn.style.display='none'
          console.log(this.value)
           console.log(requiredQuestion[myCount].correctAnswer)
         }
+        
       //   if(this.value==quizQuestions[count].correctAnswer){
       //     console.log(true)
       //   }
@@ -280,7 +317,6 @@ nextBtn.style.display='none'
         
 
       }
-
 
       let checkbtn=document.querySelectorAll('.checkbtn')
 checkbtn.forEach((some)=>{
@@ -298,19 +334,57 @@ checkbtn.forEach((some)=>{
 })
 count++
 }
-let username=document.querySelector('#username')
+
+let myname=document.getElementById('myname')
+let timeText=document.getElementById('timetext')
+
 function quizStart(){
   
-if(username.value==''){
+if(username.value=='' ){
   alert('please Provide Name')
   
 }
 else{
+  checkCheat()
+  uname.textContent='Welcome;'
+  myname.innerText=`${username.value}`
 username.value=''
   fistWindow.style.display='none'
+  console.log(quizTypeOption.value)
  
   nextBtn.style.display='block'
   moiz()
+  let counting2=60;
+  let counting3=requiredQuestion.length-1;
+    setInterval(() => {
+
+      
+      counting2--
+      if(counting2==0 && counting3>0){
+          counting2=60
+          
+          counting3--
+          // console.log(count2)
+          if(counting3==0 && counting2==0){
+              counting2=0
+              counting3++
+              alert('time up')
+              thanks()
+  
+          }
+          
+              
+              
+          
+      }
+      timeText.innerText=`You have ${requiredQuestion.length} minutes`
+      min[0].textContent=counting3
+      min[1].textContent=counting2
+      
+      
+      
+  },1000)
+  
 }
 }
   

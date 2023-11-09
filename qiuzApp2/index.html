@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
    
 </head>
+<script defer src="./app.js"></script>
 
 <body>
 
-    <h3 id="forResult"></h3>
+    <h3 id="forResult" style="text-align: center;"></h3>
     <div id="firstwindow" style="">
         <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; ">QuizApp</h2>
         <input id="username"  style="margin-top: 50px; font-size: 1.4rem; border-radius: 8px ;
@@ -21,11 +22,22 @@
         </select>
         <button id="start" onclick="quizStart()" style="font-size: 1.4rem; margin-top: 15px; border-radius: 10px; padding: 10px 20px;">Start</button>
     </div>
+<div id="timer" style="display: flex; justify-content: space-between;">
+    <h1 id="uname" style="color: blue;"></h1>
+    <div style="display: flex; flex-direction: column; color:red; font-size: 15px;"><h3 style="font-size: 10px;" id="timetext"></h3>
+        <h4 id='min' style="text-align: center;"></h4>
+        <h4 id='sec'  style="text-align: center;"></h4>
+        
+    </div>
+</div>
+<h3 style="margin-top: 25px; text-align: center; " id="myname"></h3>
+
 <div id=main>
+    
     
 </div>
 <button id="next" onclick="moiz()">Next</button>
 <button id="backhome" onclick="backHome()" style="width: 200px; margin-left: auto; margin-right: auto ; margin-top: 250px; font-size: 1.3rem; border-radius: 8px; padding: 5px 12px  ; color: white; background: green; border: 1px solid olivedrab;">Back to Home</button>
-<script src="./app.js"></script>
+
 </body>
 </html>
