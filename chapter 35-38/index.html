@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+
+        //1  
+
+
+        // function time(){
+        //     let date=new Date()
+        //     document.write( date)
+        // }
+        // time()
+
+
+        //2
+
+
+        //     function greetUser(firstName, lastName) {
+        //     const fullName = `${firstName} ${lastName}`;
+        //     return `Hello, ${fullName}!`;
+        //     }
+
+        // const greeting = greetUser('Moiz', 'Zakir');
+        //     console.log(greeting); 
+
+
+        //3
+
+        // function addNumbers(num1, num2) {
+        //     return num1 + num2;
+        // }
+
+        // const sum = addNumbers(5, 7);
+        // console.log(`The sum is: ${sum}`);
+
+        //4
+
+        // function calculator(num1, num2, operator) {
+        //     switch (operator) {
+        //         case '+':
+        //             return num1 + num2;
+        //         case '-':
+        //             return num1 - num2;
+        //         case '*':
+        //             return num1 * num2;
+        //         case '/':
+        //             return num1 / num2;
+        //         default:
+        //             return 'Invalid operator';
+        //     }
+        // }
+
+        // const result = calculator(10, 5, '+');
+        // console.log(`The result is: ${result}`);
+
+
+
+        //5
+
+
+        // function squareNumber(number) {
+        //     return number * number;
+        // }
+
+        // const squared = squareNumber(6);
+        // console.log(`The square is: ${squared}`);
+
+
+        //6
+
+        // function factorialFinder(num){
+        //     let facNum=1
+        //     for (let i=1;i<=num;i++){
+
+        //       facNum=facNum*i
+        //     //   console.log(i)
+
+        //     }
+        //     return facNum
+
+        // }
+        // let callFactorial=factorialFinder(4);
+        // console.log(callFactorial)
+
+        //7
+
+        // function displayCount(start, end) {
+        //     if (start <= end) {
+        //         for (let i = start; i <= end; i++) {
+        //             document.write(i + "<br>");
+        //         }
+        //     } else {
+        //         for (let i = start; i >= end; i--) {
+        //             document.write(i + "<br>");
+        //         }
+        //     }
+        // }
+
+
+        // displayCount(1, 5); 
+
+
+        //8
+
+
+        // function hypotneous(perp, base) {
+
+        //     let hypot = base + perp
+        //     console.log(hypot)
+
+        //     function hypotneousSqr() {
+        //         let hypSqr = base ** 2 + perp ** 2
+        //         console.log(hypSqr ** 2)
+        //     }
+        //     hypotneousSqr()
+
+        // }
+        // hypotneous(10, 12)
+
+
+
+        //9
+
+        // function areaCalc(width,hight){
+        //     let A=width*hight
+        //     console.log(A)
+
+        // }
+        // areaCalc(10,2)
+        // let width=10
+        // let height=3
+        // areaCalc(width,height)
+
+        
+        //10
+
+        // function textChecker(someText,findText){
+        //     let myText=someText
+        //     if(myText.search(findText)!== -1)
+        //     {
+        //         return true
+
+        //     }
+        //     else{
+        //         return false
+        //     }
+        // }
+        // let newVariable=textChecker('A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam.',"palindrome")
+        // console.log(newVariable)
+
+
+        //11
+
+        // let a="the quick brown fox"
+        // let b=a.split(' ')
+        // let c=[]
+        // b.forEach((words)=>{
+            
+        //  c.push( words[0].toUpperCase()+words.slice(1))
+       
+        // })
+        // console.log(c.toLocaleString().replace(/,/g,' '))
+
+
+
+        //12
+
+        // let text='web development tutorial'
+        // let b=text.split(' ')
+        // let c=0;
+        // let word=''
+
+        // for(let i=0;i<b.length;i++){
+        //     if(b[i].length>c){
+        //         c=b[i].length
+        //         word=b[i]
+
+        //     }
+        //     else{
+
+        //     }
+
+        // }
+        // console.log(word)
+
+
+        //13
+        
+    
+        // function checkNumber(text,letter){
+        //     let count=0
+        //     let myText=text
+        //     myText.indexOf(letter)
+
+        //     for(let i=0;i<myText.length;i++){
+        //         if(
+        //         myText[i].match(letter)){
+        //             count++
+        //         }
+              
+
+        //     }
+        //     console.log(count)
+
+        // }
+        // checkNumber('my name is moiz','m')
+
+
+        //14
+
+            let pi=3.14
+            
+        function circumference(radius){
+            
+            let curcum=2*pi*radius
+            return curcum
+
+
+        }
+        function Area(radius){
+            
+            let area=pi*radius**2
+            return area
+
+
+        }
+
+        let forCurrcum=circumference(10)
+        let forArea=Area(10)
+        console.log(forCurrcum)
+        console.log(forArea)
+       
+       
+   
+         
+    </script>
+
+</body>
+
+</html>

@@ -52,7 +52,9 @@ h1{
     flex-direction: column;
     
 }
-
+#checks:active{
+    background-color: blue;
+}
 #firstportion input{
     border: 1px solid white;
     background: none;
@@ -88,3 +90,4 @@ h1{
 #paras p{
     margin-top: 12px;
 }
+
