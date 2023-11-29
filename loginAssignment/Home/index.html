@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="overflow: hidden;">
+    <div id="nav">
+    <img src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt=""width='50px' height="50px">
+    <h2 style="width: 70%;">Welcome <span id="viewname"></span></h3>
+        <div style="width: 30%; display: flex; justify-content: flex-end;">
+
+        <button  onclick="clickHandler()"><i class="fa fa-bars" style="font-size:24px"></i></button>
+    </div>
+   
+  
+   
+    </div>
+    <div id="Updatediv"  style=" justify-content: center; align-items: center; width: 100%; margin-top: 12px;">
+        
+        <div style="width:420px; display: flex; flex-direction: column; align-items: center; background-color: beige;">
+            <h3  style="cursor: pointer; margin-left: 380px; font-family: Verdana, Geneva, Tahoma, sans-serif;" onclick="modalClose()">X</h3>
+            <p>Email</p> 
+
+        <input  id="uemail" type="text" placeholder="Enter Email" name="email" required>
+        <p>Name</p>
+        <input  id="uname" type="text" placeholder="Enter name" name="email" required>
+
+        <p>Password</p>
+<input id="upassword" type="text" placeholder="Enter Password" name="psw" required>
+
+<button id="login" onclick="updateHandler()" type="submit" class="btn">Update</button>
+</div>
+
+
+    </div>
+    <div class="sidebar tranform">
+        <div style="display: flex; justify-content: space-between;">
+        <h3 style="margin-top: 5px; color: blue;">Settings</h3>
+        <button onclick="clickHandler()" style=" font-size: 2rem; background: none; border: none;">x</button>
+    </div>
+        <div>
+            <ul style="font-size: 20px;">
+                <li id="personal" onclick="modalHandler()" >Personal Info</li>
+                <li id="Logout" onclick="logoutHandler()">Logout</li>
+               
+            </ul>
+        </div>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
