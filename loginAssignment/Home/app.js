@@ -7,6 +7,13 @@ let uname=document.getElementById('uname')
 let upassword=document.getElementById('upassword')
 let sidebar=document.querySelector('.sidebar')
 let brandname=document.querySelector('#brandname')
+let postStart=document.querySelector('#postStart')
+let myprof=document.querySelector('#myprof');
+let phnum=document.querySelector('#phnum')
+let hobby=document.querySelector('#hobby')
+let profpic=document.querySelector('#profpic')
+let discription=document.querySelector('#discription')
+let {userName,userEmail,picurl,decr,hobbies,phone}=JSON.parse(localStorage.getItem('loggedd user '))
 
 // brandname.textContent=`${JSON.parse(localStorage.getItem('loggedd user ')).userName}`
 if(!(JSON.parse(localStorage.getItem('loggedd user ')))){
@@ -31,41 +38,59 @@ function logoutHandler(){
     window.location='../Login/index.html'
 }
 // veiwname.textContent=loggedData.userName
-uname.value=loggedData.userName
-uemail.value=loggedData.userEmail
-upassword.value=loggedData.userPassword
+uname.value=userName
+uemail.value=userEmail
+phnum.value=phone||''
+hobby.value=hobbies||''
+profpic.value=picurl||''
+discription.value=decr||''
+
 function modalHandler(){
     document.body.style.backgroundColor='grey'
     Updatediv.style.display='flex'
-    sideBar.classList.remove('againtransform')
+    myprof.style.display='none'
+    // sideBar.classList.remove('againtransform')
     count++
+    
     
 }
 // brandname.innerText=(loggedData.userName)
  let data=JSON.parse(localStorage.getItem('user'))
+
 //  console.log(data)
 function updateHandler(){
     document.body.style.background='none'
+    myprof.style.display='flex'
     
 
 
-    let userdata=data.forEach((mydata)=>{
-        if (mydata.userEmail==loggedData.userEmail){
+    let userdata=data.find((mydata)=>{
+        if (mydata.userid==loggedData.userid){
             mydata.userName=uname.value
             mydata.userEmail=uemail.value
-            mydata.userPassword=upassword.value
-            mydata.userConfirmPassword=upassword.value
+            mydata.phone=phnum.value
+            mydata.hobbies=hobby.value
+            mydata.picurl=profpic.value
+           mydata.decr =discription.value
+        //    userName=uname.value
+        //    userEmail=uemail.value
+        //    picurl=profpic.value
+        //    decr=discription.value
+        //    hobbies=hobby.value
+        //    phone=phnum.value
             //  localStorage.setItem('user',JSON.stringify(data))
 
-            alert('update Succesfully ')
+           
             
 
         }
+        
         Updatediv.style.display='none'
 
     
     
         })
+        alert('update Succesfully ')
         // console.log(userdata)
         localStorage.setItem('user',JSON.stringify(data))
     }
@@ -74,11 +99,12 @@ function updateHandler(){
 function modalClose(){
     Updatediv.style.display='none'
     document.body.style.background='none'
+    myprof.style.display='flex'
 }
 
 
 
-userUi=document.getElementById('users')
+let userUi=document.getElementById('users')
 
 
 let postText=document.querySelector('#posttext')
@@ -138,6 +164,10 @@ function submitHandler(){
 let postArea=document.querySelector("#postArea")
 let postHtml;
 function displayHandler(){
+    postStart.style.display='flex'
+    myprof.style.display='none'
+    
+    
     let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
     console.log(mypost)
     userUi.innerHTML=''
@@ -169,65 +199,12 @@ function displayHandler(){
 displayHandler()
 
 
-const userPost = ()=>{
-    let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
-
-    userUi.innerHTML=''
-    postArea.innerHTML=''
-    mypost.filter((data)=>{
-        if(data.useremail==JSON.parse(localStorage.getItem('loggedd user ')).userEmail) return true 
-
-    }).forEach((e)=>{
-
-      
-
-      
-            postHtml=` <div id='mycard' class="card" style="width: 18rem;">
-        <img src="${e.imageurl}" width=100px height:100px class="card-img-top" alt="...">
-        <div class="card-body">
-        <div style='display:flex;justify-content:space-between; padding:10px 0px ;'>
-    <button class='modifybtn' style='background:none; border:none; ' onclick=editHanlder(${e.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-  </svg></button><button class='modifybtn' id='del' style='background:none; border:none; ' onclick=deleteHandler(${e.Id})><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i></button></div>
-        
-      <h5 class="card-title">${e.username}</h5>
-      <p class="card-text">${e.text}</p>
-     
-        </div>
-    
-        </div>`
-        postArea.innerHTML+=postHtml
-    
-        
-        
-
-    })
-    
-    
-    
-
-}
-
-// const userShow=()=>{
-//     postArea.innerHTML=''
-
-//    let dataHtml=`  <table>
-//     <tr>
-//         <td>Row 1, Column 1</td>
-//         <td>Row 1, Column 2</td>
-//     </tr>
-//     <tr>
-//         <td>Row 2, Column 1</td>
-//         <td>Row 2, Column 2</td>
-//     </tr>
-// </table>`
-// userUi.innerHTML=dataHtml
 
 
-// }
 
 let editItem;
 const editHandler=(uId)=>{
+    console.log('moiz')
     let mypost=JSON.parse(localStorage.getItem('posts'))
    let editValue= mypost.find((e)=>{
         if(e.Id==uId)
@@ -269,19 +246,152 @@ displayHandler()
 
 
 
-function photoEditSend(u){
-    getPhoto()
+
+const deleteHanlder=(uId)=>{
     let mypost=JSON.parse(localStorage.getItem('posts'))
-    let editValue= mypost.find((e)=>{
-        if(e.Id==u)
-        
-        return true
+    console.log('delete >>',uId)
+    let deleteElem=mypost.filter((e)=>{
+        if(e.Id!=uId) return true
     })
-    editValue.imageurl=photUrl
-   
-    photobtn.setAttribute('onclick','getPhoto()')
-    photUrl=''
+    localStorage.setItem('posts',JSON.stringify(deleteElem))
+    displayHandler()
 }
+
+
+const userPost = ()=>{
+   
+   
+    myprof.style.display='none'
+    let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
+
+    userUi.innerHTML=''
+    postArea.innerHTML=''
+    mypost.filter((data)=>{
+        if(data.useremail==JSON.parse(localStorage.getItem('loggedd user ')).userEmail) return true 
+
+    }).forEach((e)=>{
+
+      
+
+      
+            postHtml=` <div id='mycard' class="card" style="width: 18rem;">
+        <img src="${e.imageurl}" width=100px height:100px class="card-img-top" alt="...">
+        <div class="card-body">
+        <div style='display:flex;justify-content:space-between; padding:10px 0px ;'>
+    <button class='modifybtn' style='background:none; border:none; ' onclick=editHandler(${e.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+  </svg></button><button class='modifybtn' id='del' style='background:none; border:none; ' onclick=deleteHanlder(${e.Id})><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i></button></div>
+        
+      <h5 class="card-title">${e.username}</h5>
+      <p class="card-text">${e.text}</p>
+     
+        </div>
+    
+        </div>`
+        postArea.innerHTML+=postHtml
+    
+        
+        
+
+    })
+    
+    
+    
+
+}
+
+let myprofileHtml=`<div class="card" style="width: 23rem;">
+<img height='180px'width='130px' src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" class="card-img-top" alt="..." id='profilepic'>
+<div class="card-body mt-0">
+  <h5 class="card-title" id='profilename'>Moiz</h5>
+  <p class="card-text"  id='profiledescription'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+</div>
+<ul class="list-group list-group-flush mt-0">
+  <li class="list-group-item"  id='profileemail'>Email</li>
+  <li class="list-group-item"  id='profilphone'>phonceNumber</li>
+  <li class="list-group-item"  id='profilhobbies'>Hobbies</li>
+</ul>
+
+
+
+<button onclick='modalHandler()'  id="edinfo " type="button" class="btn btn-outline-primary" style="width= 100px !important;">Edit Information</button>
+
+
+</div>`
+function Myprofile(){
+   
+    // console.log(profileData)
+    userUi.innerHTML=''
+    postArea.innerHTML=''
+    postStart.style.display='none'
+    myprof.style.display='flex'
+    myprof.innerHTML=myprofileHtml
+    
+let profilename=document.getElementById('profilename')
+let profiledescription=document.getElementById('profiledescription')
+let profileemail=document.getElementById('profileemail')
+let profilphone=document.getElementById('profilphone')
+let profilhobbies=document.getElementById('profilhobbies')
+let profilepic=document.getElementById('profilepic')
+
+profilename.innerText=userName
+profiledescription.innerText=decr||'no description yet'
+profileemail.innerText=userEmail
+profilphone.innerText=phone ||'No phone Number'
+profilhobbies.innerText=hobbies||'No hobbies Yet'
+if(picurl){
+    profilepic.src=picurl
+}
+
+
+}
+
+
+function upgradeInfoHandler(){
+
+
+
+
+
+
+
+}
+
+// const userShow=()=>{
+//     postArea.innerHTML=''
+
+//    let dataHtml=`  <table>
+//     <tr>
+//         <td>Row 1, Column 1</td>
+//         <td>Row 1, Column 2</td>
+//     </tr>
+//     <tr>
+//         <td>Row 2, Column 1</td>
+//         <td>Row 2, Column 2</td>
+//     </tr>
+// </table>`
+// userUi.innerHTML=dataHtml
+
+
+// }
+
+
+
+
+
+// function photoEditSend(u){
+//     getPhoto()
+//     let mypost=JSON.parse(localStorage.getItem('posts'))
+//     let editValue= mypost.find((e)=>{
+//         if(e.Id==u)
+        
+//         return true
+//     })
+//     editValue.imageurl=photUrl
+   
+//     photobtn.setAttribute('onclick','getPhoto()')
+//     photUrl=''
+// }
 
 // let updatepost;
 // const editHanlder=(uId)=>{
@@ -342,12 +452,3 @@ function photoEditSend(u){
 //     photUrl=''
     
 // }
-const deleteHanlder=(uId)=>{
-    let mypost=JSON.parse(localStorage.getItem('posts'))
-    console.log('delete >>',uId)
-    let deleteElem=mypost.filter((e)=>{
-        if(e.Id!=uId) return true
-    })
-    localStorage.setItem('posts',JSON.stringify(deleteElem))
-    displayHandler()
-}

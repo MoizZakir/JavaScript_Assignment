@@ -82,7 +82,9 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #ffffff;
     outline: none;
 }
-
+p{
+    padding: 12px 0;
+}
 /* Set a style for the submit button */
 .btn {
     background-color: #534caf;
@@ -99,8 +101,8 @@ input[type=text]:focus, input[type=password]:focus {
 }
 input[type=text], input[type=password] {
     width: 300px;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    padding: 12px;
+    margin: 1px 0 22px 0;
     border: none;
     background: none;
     border-bottom: 1px solid gray;
@@ -143,4 +145,12 @@ input[type=text], input[type=password] {
   }
 .navbar{
     background-color: azure!important;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+}
+#postStart{
+    margin-top: 20px;
+    padding-top: 30px;
 }

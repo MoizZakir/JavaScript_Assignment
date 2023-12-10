@@ -35,7 +35,8 @@ let mydata={
     userName:uname.value
     ,userEmail:uemail.value
     ,userPassword:upassword.value
-    ,userConfirmPassword:uconfirmpassword.value
+    ,userConfirmPassword:uconfirmpassword.value,
+    userid:Date.now()
     }
     console.log(user)
     user.push(mydata)
