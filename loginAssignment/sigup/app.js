@@ -21,15 +21,16 @@ if (uconfirmpassword.value !=upassword.value)return alert('Confirm Password does
 
 if(upassword.value.length<6) return alert('password must be atleats 6 character ')
 
-let existUser=user.forEach((data)=>{
-    if(data.userName==uname.value ||data.userEmail==uemail.value){
+let existUser=user.find((data)=>{
+    if(data.userName==uname.value || data.userEmail==uemail.value){
+        console.log('hello')
         return true
     }
 })
 if(existUser){
     return alert('user Already Exist')
 }
-
+else{
 
 let mydata={
     userName:uname.value
@@ -45,7 +46,7 @@ let mydata={
     
     setTimeout(()=>{window.location='../Login/index.html'},2000)
 
-}  
+}  }
 
 function loginHandler(){
     if(JSON.parse(localStorage.getItem('user'))){

@@ -15,7 +15,7 @@ let profpic=document.querySelector('#profpic')
 let discription=document.querySelector('#discription')
 let {userName,userEmail,picurl,decr,hobbies,phone}=JSON.parse(localStorage.getItem('loggedd user '))
 
-// brandname.textContent=`${JSON.parse(localStorage.getItem('loggedd user ')).userName}`
+
 if(!(JSON.parse(localStorage.getItem('loggedd user ')))){
     window.location='../Login/index.html'
     }
@@ -37,13 +37,8 @@ function logoutHandler(){
     localStorage.removeItem('loggedd user ')
     window.location='../Login/index.html'
 }
-// veiwname.textContent=loggedData.userName
-uname.value=userName
-uemail.value=userEmail
-phnum.value=phone||''
-hobby.value=hobbies||''
-profpic.value=picurl||''
-discription.value=decr||''
+
+
 
 function modalHandler(){
     document.body.style.backgroundColor='grey'
@@ -54,45 +49,95 @@ function modalHandler(){
     
     
 }
-// brandname.innerText=(loggedData.userName)
+
  let data=JSON.parse(localStorage.getItem('user'))
 
-//  console.log(data)
+ uname.value=userName
+ uemail.value=userEmail
+ phnum.value=phone||''
+ hobby.value=hobbies||''
+ profpic.value=picurl||''
+ discription.value=decr||''
+
+
 function updateHandler(){
     document.body.style.background='none'
     myprof.style.display='flex'
     
+let forData=data.find((curr)=>{
+    if(curr.userid==loggedData.userid)
+    return true
+})
+console.log(forData)
 
-
-    let userdata=data.find((mydata)=>{
-        if (mydata.userid==loggedData.userid){
-            mydata.userName=uname.value
-            mydata.userEmail=uemail.value
-            mydata.phone=phnum.value
-            mydata.hobbies=hobby.value
-            mydata.picurl=profpic.value
-           mydata.decr =discription.value
-        //    userName=uname.value
-        //    userEmail=uemail.value
-        //    picurl=profpic.value
-        //    decr=discription.value
-        //    hobbies=hobby.value
-        //    phone=phnum.value
-            //  localStorage.setItem('user',JSON.stringify(data))
+if(uemail.value==forData.userEmail){
+    forData.userName=uname.value
+    forData.userEmail=uemail.value
+    forData.phone=phnum.value
+    forData.hobbies=hobby.value
+    forData.picurl=profpic.value
+    forData.decr=discription.value
+    Updatediv.style.display='none'
+    
+    return alert('update succefully')
+}
+else{
+    data.filter((e)=>{
+        if(e.userEmail!=loggedData.userEmail)
+        return true
+    }).find((f)=>{
+        if(uemail.value==f.userEmail){
+            return alert("Email Already Taken")
+        }
+        else{
+           
+        forData.userName=uname.value
+        forData.userEmail=uemail.value
+        forData.phone=phnum.value
+        forData.hobbies=hobby.value
+        forData.picurl=profpic.value
+        forData.decr=discription.value
+        Updatediv.style.display='none'
+        
+        return  alert('Update Succefully')
+        }
+        
+    
+    
+    })
+   
+}
+    // let userdata=data.find((mydata)=>{
+    //     if (mydata.userid==loggedData.userid){
+    //         if(uemail.value==loggedData)
+    //         mydata.userName=uname.value
+    //         mydata.userEmail=uemail.value
+    //         mydata.phone=phnum.value
+    //         mydata.hobbies=hobby.value
+    //         mydata.picurl=profpic.value
+    //        mydata.decr =discription.value
+        //    loggedData.userName=uname.value
+        //     loggedData.userEmail=uemail.value
+        //    loggedData.picurl=profpic.value
+        //    loggedData.decr=discription.value
+        //    loggedData.hobbies=hobby.value
+        //     loggedData.phone=phnum.value
+        //   localStorage.setItem('user',JSON.stringify(data))
 
            
             
 
-        }
+        // }
         
-        Updatediv.style.display='none'
+        
 
     
     
-        })
-        alert('update Succesfully ')
+        // })
+        // alert('update Succesfully ')
         // console.log(userdata)
         localStorage.setItem('user',JSON.stringify(data))
+        // localStorage.setItem('loggedd user ',JSON.stringify(loggedData))
     }
     
     
@@ -118,7 +163,7 @@ function getPhoto(){
 }
 
 let mypost=JSON.parse(localStorage.getItem('posts')) || []
-// console.log(mypost)
+
 
 function submitHandler(){
     let mypost=JSON.parse(localStorage.getItem('posts')) || []
@@ -260,7 +305,7 @@ const deleteHanlder=(uId)=>{
 
 const userPost = ()=>{
    
-   
+    postStart.style.display='flex'
     myprof.style.display='none'
     let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
 
