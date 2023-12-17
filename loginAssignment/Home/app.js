@@ -6,7 +6,7 @@ let Updatediv=document.getElementById('Updatediv')
 let uname=document.getElementById('uname')
 let upassword=document.getElementById('upassword')
 let sidebar=document.querySelector('.sidebar')
-let brandname=document.querySelector('#brandname')
+let brandname=document.querySelector(".mybrand " )
 let postStart=document.querySelector('#postStart')
 let myprof=document.querySelector('#myprof');
 let phnum=document.querySelector('#phnum')
@@ -14,24 +14,24 @@ let hobby=document.querySelector('#hobby')
 let profpic=document.querySelector('#profpic')
 let discription=document.querySelector('#discription')
 let {userName,userEmail,picurl,decr,hobbies,phone}=JSON.parse(localStorage.getItem('loggedd user '))
-
+brandname.textContent=`Welcome ${userName[0].toUpperCase()+userName.slice(1)}`   
 
 if(!(JSON.parse(localStorage.getItem('loggedd user ')))){
     window.location='../Login/index.html'
     }
-function clickHandler(){
-    ++count
-    if(count%2==0){
-        sideBar.classList.add('againtransform')
-        // sideBar.classList.remove('tranform')
-    }
-    else{
-        // sideBar.classList.add('transform')
-        sideBar.classList.remove('againtransform')
+// function clickHandler(){
+//     ++count
+//     if(count%2==0){
+//         sideBar.classList.add('againtransform')
+//         // sideBar.classList.remove('tranform')
+//     }
+//     else{
+//         // sideBar.classList.add('transform')
+//         sideBar.classList.remove('againtransform')
 
-    }
-    console.log(count)
-}
+//     }
+//     console.log(count)
+// }
 let loggedData=JSON.parse(localStorage.getItem('loggedd user '))
 function logoutHandler(){
     localStorage.removeItem('loggedd user ')
@@ -40,29 +40,29 @@ function logoutHandler(){
 
 
 
-function modalHandler(){
-    document.body.style.backgroundColor='grey'
-    Updatediv.style.display='flex'
-    myprof.style.display='none'
-    // sideBar.classList.remove('againtransform')
-    count++
+// function modalHandler(){
+//     document.body.style.backgroundColor='grey'
+//     Updatediv.style.display='flex'
+//     myprof.style.display='none'
+//     // sideBar.classList.remove('againtransform')
+//     count++
     
     
-}
+// }
 
  let data=JSON.parse(localStorage.getItem('user'))
 
  uname.value=userName
  uemail.value=userEmail
- phnum.value=phone||''
- hobby.value=hobbies||''
- profpic.value=picurl||''
- discription.value=decr||''
+ phnum.value=phone ||" "
+ hobby.value=hobbies || " "
+ profpic.value=picurl || " "
+ discription.value=decr || " "
 
 
-function updateHandler(){
-    document.body.style.background='none'
-    myprof.style.display='flex'
+ function updateHandler(){
+    //  document.body.style.background='none'
+    //  myprof.style.display='flex'
     
 let forData=data.find((curr)=>{
     if(curr.userid==loggedData.userid)
@@ -70,43 +70,65 @@ let forData=data.find((curr)=>{
 })
 console.log(forData)
 
-if(uemail.value==forData.userEmail){
+if(uemail.value==loggedData.userEmail){
     forData.userName=uname.value
     forData.userEmail=uemail.value
     forData.phone=phnum.value
     forData.hobbies=hobby.value
     forData.picurl=profpic.value
     forData.decr=discription.value
+    loggedData.userName=uname.value
+loggedData.userEmail=uemail.value
+loggedData.picurl=profpic.value
+loggedData.decr=discription.value
+loggedData.hobbies=hobby.value
+loggedData.phone=phnum.value
     Updatediv.style.display='none'
-    
-    return alert('update succefully')
+    localStorage.setItem('user',JSON.stringify(data))
+    localStorage.setItem('loggedd user ',JSON.stringify(loggedData))
+    return alert('update succefully hai')
 }
 else{
-    data.filter((e)=>{
-        if(e.userEmail!=loggedData.userEmail)
-        return true
+    let minedata=data.filter((e)=>{
+        if(e.userEmail!=forData.userEmail){
+        return true}
     }).find((f)=>{
         if(uemail.value==f.userEmail){
-            return alert("Email Already Taken")
+            Updatediv.style.display='none'
+            return true
         }
-        else{
-           
+
+    
+    
+    })
+    if(!minedata){
+               
         forData.userName=uname.value
         forData.userEmail=uemail.value
         forData.phone=phnum.value
         forData.hobbies=hobby.value
         forData.picurl=profpic.value
         forData.decr=discription.value
+        loggedData.userName=uname.value
+        loggedData.userEmail=uemail.value
+        loggedData.picurl=profpic.value
+        loggedData.decr=discription.value
+        loggedData.hobbies=hobby.value
+        loggedData.phone=phnum.value
         Updatediv.style.display='none'
+        localStorage.setItem('loggedd user ',JSON.stringify(loggedData))
+        localStorage.setItem('user',JSON.stringify(data))
         
-        return  alert('Update Succefully')
-        }
-        
-    
-    
-    })
+        return  alert('Update Succefully chal')
+
+    }
+    else{
+        Updatediv.style.display='none'
+        return alert('Email Already Taken')
+    }
    
 }
+
     // let userdata=data.find((mydata)=>{
     //     if (mydata.userid==loggedData.userid){
     //         if(uemail.value==loggedData)
@@ -140,7 +162,7 @@ else{
         // localStorage.setItem('loggedd user ',JSON.stringify(loggedData))
     }
     
-    
+
 function modalClose(){
     Updatediv.style.display='none'
     document.body.style.background='none'
@@ -219,17 +241,19 @@ function displayHandler(){
     postArea.innerHTML=''
 
     mypost.forEach((data)=>{
-        postHtml=` <div id='mycard' class="card my-3" style="width: 18rem;">
-    <img src="${data.imageurl}" width=100px height:100px class="card-img-top" alt="">
+        postHtml=` <div id='mycard' class="card my-3" style="width: 20rem; margin-bottom:50px">
+    
     <div class="card-body">
-    ${JSON.parse(localStorage.getItem('loggedd user ')).userEmail==data.useremail ? `<div style='padding:10px 0 ;display:flex;justify-content:space-between;'><button class='modifybtn' style='background:none; border:none; ' onclick=editHandler(${data.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"  fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+    <h5 class="card-title">${data.username}</h5>
+    ${JSON.parse(localStorage.getItem('loggedd user ')).userEmail==data.useremail ? `<div style='padding:5px 0 ;display:flex;justify-content:space-between;'><button class='modifybtn' style='background:none; border:none; ' onclick=editHandler(${data.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"  fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
   </svg></button><button class='modifybtn' id='del' style='background:none; border:none; ' onclick=deleteHanlder(${data.Id})><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i></button></div>`:``}
     
-  <h5 class="card-title">${data.username}</h5>
-  <p class="card-text">${data.text}</p>
  
+  <p class="card-text">${data.text}</p>
+
     </div>
+    <img src="${data.imageurl}" width=100rem height:200px class="card-img-top" alt="...">
 
     </div>`
     postArea.innerHTML+=postHtml
@@ -319,18 +343,21 @@ const userPost = ()=>{
       
 
       
-            postHtml=` <div id='mycard' class="card" style="width: 18rem;">
-        <img src="${e.imageurl}" width=100px height:100px class="card-img-top" alt="...">
+            postHtml=` <div id='mycard' class="card" style="width: 20rem; margin-bottom:50px">
+        
         <div class="card-body">
-        <div style='display:flex;justify-content:space-between; padding:10px 0px ;'>
+        <h5 class="card-title">${e.username}</h5>
+        <div style='display:flex;justify-content:space-between; padding:5px 0px ;'>
     <button class='modifybtn' style='background:none; border:none; ' onclick=editHandler(${e.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
   </svg></button><button class='modifybtn' id='del' style='background:none; border:none; ' onclick=deleteHanlder(${e.Id})><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i></button></div>
         
-      <h5 class="card-title">${e.username}</h5>
+     
       <p class="card-text">${e.text}</p>
+      
      
         </div>
+        <img src="${e.imageurl}" width=20rem height:343400px class="card-img-top" alt="...">
     
         </div>`
         postArea.innerHTML+=postHtml
@@ -359,7 +386,7 @@ let myprofileHtml=`<div class="card" style="width: 23rem;">
 
 
 
-<button onclick='modalHandler()'  id="edinfo " type="button" class="btn btn-outline-primary" style="width= 100px !important;">Edit Information</button>
+<button   id="edinfo " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" style="width= 100px !important;">Edit Information</button>
 
 
 </div>`
