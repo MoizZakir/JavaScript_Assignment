@@ -13,7 +13,7 @@ const quizQuestions = [
   },
   {
     question: "Which HTML tag is used to create a hyperlink?",
-    options: ["<a>", "<link>", "<href>", "<url>"],
+    options: [`[a]`, "<link>", "<href>", "<url>"],
     correctAnswer: "<a>",
     type: "HTML",
   },
@@ -145,7 +145,7 @@ const quizQuestions = [
   },
   {
     question: "What is the correct way to write a JavaScript comment?",
-    options: ["// 'This is a comment'", "<!-- This is a comment -->", "/*' This is a comment' */", "# This is a comment"],
+    options: ["// This is a comment", "&lt !-- This is a comment --&gt", "/*' This is a comment' */", "# This is a comment"],
     correctAnswer: "// This is a comment",
     type: "JavaScript",
   },
@@ -225,7 +225,7 @@ function backHome() {
   window.location = '/index.html'
 
 }
-
+let greet=document.getElementById('greet')
 let nextBtn = document.getElementById('next')
 let min = document.getElementsByTagName('h4')
 let username = document.querySelector('#username')
@@ -243,6 +243,14 @@ function thanks() {
   main.style.display = 'none'
   nextBtn.style.display = 'none'
   timer.style.display = 'none'
+  if(((score / requiredQuestion.length) * marks >=70)){
+    greet.innerHTML='Congratulation You Passed'
+    greet.style.color='green'
+  }
+  else{
+    greet.innerHTML='Sorry You Failed'
+    greet.style.color='red'
+  }
   console.log(score)
 
 }

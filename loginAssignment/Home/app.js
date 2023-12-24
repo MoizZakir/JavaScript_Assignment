@@ -198,7 +198,8 @@ function submitHandler(){
             imageurl:photUrl,
             username:JSON.parse(localStorage.getItem('loggedd user ')).userName,
             useremail:JSON.parse(localStorage.getItem('loggedd user ')).userEmail,
-            Id: Date.now()
+            Id: Date.now(),
+            like:[]
             }
        
     }
@@ -209,7 +210,8 @@ function submitHandler(){
             imageurl:'',
             username:JSON.parse(localStorage.getItem('loggedd user ')).userName,
             useremail:JSON.parse(localStorage.getItem('loggedd user ')).userEmail,
-            Id: Date.now()
+            Id: Date.now(),
+            like:[]
             }
     
        
@@ -235,6 +237,7 @@ function displayHandler(){
     myprof.style.display='none'
     
     
+    
     let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
     console.log(mypost)
     userUi.innerHTML=''
@@ -253,7 +256,19 @@ function displayHandler(){
   <p class="card-text">${data.text}</p>
 
     </div>
-    <img src="${data.imageurl}" width=100rem height:200px class="card-img-top" alt="...">
+    ${(data.imageurl)? `<img src="${data.imageurl}" width=100rem height:200px class="card-img-top" alt="...">`:''}
+    <div style='display:flex; justify-content:space-between;'><p> 
+    
+    
+    <svg xmlns="http://www.w3.org/2000/svg" id=${data.Id} style='margin:0px 5px; cursor:pointer;' onclick=likeHandler(${data.Id}) width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+  </svg>
+  ${data.like.length} Like</p>
+    <p><svg style='margin:0px 5px;' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+    <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+    <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2"/>
+  </svg>Commment</p>
+    </div>
 
     </div>`
     postArea.innerHTML+=postHtml
@@ -261,8 +276,8 @@ function displayHandler(){
     })
     
     
-
-
+z()
+    
 
 }
 displayHandler()
@@ -328,10 +343,12 @@ const deleteHanlder=(uId)=>{
 
 
 const userPost = ()=>{
+
    
     postStart.style.display='flex'
     myprof.style.display='none'
     let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
+    
 
     userUi.innerHTML=''
     postArea.innerHTML=''
@@ -346,27 +363,57 @@ const userPost = ()=>{
             postHtml=` <div id='mycard' class="card" style="width: 20rem; margin-bottom:50px">
         
         <div class="card-body">
-        <h5 class="card-title">${e.username}</h5>
-        <div style='display:flex;justify-content:space-between; padding:5px 0px ;'>
-    <button class='modifybtn' style='background:none; border:none; ' onclick=editHandler(${e.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-  </svg></button><button class='modifybtn' id='del' style='background:none; border:none; ' onclick=deleteHanlder(${e.Id})><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i></button></div>
+        
+        
+        <div style='display:flex;justify-content:space-between; padding:1px 0px ;'>
+        <p class="card-title" style='display:flex;'><img src="${(picurl!='') ? picurl:"https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0="}" style='border-radius:50%; width:50px; height:50px; margin-top:-15px'>${e.username}</p>
+        <div class="dropdown">
+        <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style=background:none>
+          
+        </button>
+        <ul class="dropdown-menu">
+       <li style=' margin:10px 5px;'> <button class='modifybtn' style='background:none; border:none; ' onclick=editHandler(${e.Id})><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+      </svg>Edit</button></li>
+      <li style=' margin:10px 5px;'><button class='modifybtn' id='del' style='background:none; border:none; ' onclick=deleteHanlder(${e.Id})><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i> Delete</button> </li>
+        </ul>
+      </div>
+      
+    </div>
         
      
-      <p class="card-text">${e.text}</p>
+      <h6 class="card-text">${e.text}</h6>
       
      
-        </div>
-        <img src="${e.imageurl}" width=20rem height:343400px class="card-img-top" alt="...">
-    
-        </div>`
+        </div style='width:100%;'>
+        ${(e.imageurl)? `<img src="${e.imageurl}" style='width:100%'  height:200px class="card-img-top" alt="...">`:''}
+
+        <div style='display:flex; justify-content:space-between;'><p>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" id=${e.Id} style='margin:0px 5px; cursor:pointer;' onclick=likeHandler(${e.Id}) width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+  <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+</svg>
+        
+${e.like.length}  Like</p>
+        <p><svg  style='margin:0px 5px;' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+        <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+        <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2"/>
+      </svg>Commment</p>
+        </div>    
+     </div>
+        
+       
+        
+        `
+        
         postArea.innerHTML+=postHtml
     
         
         
+        
 
     })
-    
+    z()
     
     
 
@@ -392,6 +439,7 @@ let myprofileHtml=`<div class="card" style="width: 23rem;">
 </div>`
 function Myprofile(){
    
+   
     // console.log(profileData)
     userUi.innerHTML=''
     postArea.innerHTML=''
@@ -407,11 +455,11 @@ let profilhobbies=document.getElementById('profilhobbies')
 let profilepic=document.getElementById('profilepic')
 
 profilename.innerText=userName
-profiledescription.innerText=decr||'no description yet'
+profiledescription.innerText=(decr !=' ')? decr : 'no description yet'
 profileemail.innerText=userEmail
-profilphone.innerText=phone ||'No phone Number'
-profilhobbies.innerText=hobbies||'No hobbies Yet'
-if(picurl){
+profilphone.innerText=(phone !=' ')?phone :'No phone Number'
+profilhobbies.innerText=(hobbies !=' ' )? hobbies :'No hobbies Yet'
+if(picurl!=' '){
     profilepic.src=picurl
 }
 
@@ -428,6 +476,97 @@ function upgradeInfoHandler(){
 
 
 }
+
+function z(){
+const perLike=()=>{
+    let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
+
+   let tagdi= mypost.filter((e)=>{
+
+      return e.like.find((f)=>{
+        return f==userEmail
+      })
+
+    })
+    return tagdi
+
+}
+
+// console.log(perLike())
+
+let likedData= perLike().map((e)=>{
+    return e.Id
+})
+console.log(likedData)
+
+ likedData.forEach((e)=>{
+     let liked=document.getElementById(e)
+      liked.style.color='blue'
+ })
+}
+
+
+const likeHandler=(id)=>{
+    
+    
+    let like=document.getElementById(id)
+    let mypost=JSON.parse(localStorage.getItem('posts')) ||[]
+   
+     let posten=mypost.find((data)=>{
+        return data.Id==id
+
+     });
+     
+console.log(posten)
+if (!posten.like) {
+
+
+    posten.like.push(userEmail)
+    localStorage.setItem('posts',JSON.stringify(mypost))
+   
+    console.log(posten.like)
+}
+else{
+    let likePost=(posten.like).find((e)=>{
+        return e==userEmail
+     })
+
+if(!likePost){
+   posten.like.push(userEmail)
+localStorage.setItem('posts',JSON.stringify(mypost))
+like.style.color='black'
+console.log(posten.like)
+
+
+    
+
+}
+
+else{
+
+
+    
+    posten.like.splice(posten.like.indexOf(likePost),1)
+    localStorage.setItem('posts',JSON.stringify(mypost))
+    console.log(posten.like)
+
+}}
+z()
+}
+
+
+
+//kam ka hai ye :::
+
+
+
+
+
+
+
+
+
+
 
 // const userShow=()=>{
 //     postArea.innerHTML=''
