@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    width: 50%; margin-top: 40px;
+    overflow-x: visible;
+}
+#load div{
+    
+    margin-top: 100px;
+    width: 60px;
+    height: 60px;
+    border-top-width: 4px;
+    border-top: 4px solid green;
+    border-radius: 50%;
+    animation: loader;
+    animation-duration:0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+
+}
+@keyframes loader {
+    from{
+        transform: rotate(360deg);
+    }
+    t0{transform: rotate(360deg);}
+}
+button{
+    background: white
+   ;
+    border-radius: 10px;
+    margin-left: -25px;
+    border-left: none;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+input{
+    font-size: 1.3rem;
+    border-radius: 10px;
+    
+    
+}
