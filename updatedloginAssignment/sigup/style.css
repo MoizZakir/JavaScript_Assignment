@@ -1,0 +1,51 @@
+input{
+    margin: 12px auto;
+    height: 40px;
+    /* width: 100%; */
+    /* width: 270px; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 8px ;
+    background: none;
+    /* border: 1px solid green; */
+    font-family: 'Edu SA Beginner', cursive;
+    font-size: 17px;
+    padding: 10px 20px;
+    color: black;
+   
+    margin: 20px auto;
+}
+label{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(255, 246, 246);
+display: none;
+    margin: 12px auto;
+}
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(88, 88, 88);
+    margin-top: 20px;
+}
+button{
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid purple;
+    background-color: black;
+    color: white;
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+p{
+    color: white;
+}
+h1{
+    position: relative;
+    top: -20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(26, 27, 27);
+}

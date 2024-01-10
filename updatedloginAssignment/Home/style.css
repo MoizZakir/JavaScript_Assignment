@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* img{
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 4px;
+} */
+/* #nav{
+    display: flex;
+    background-color: rgb(173, 173, 173);
+    position: relative;} */
+
+h2{
+    margin-top: 17px;
+    margin-left: 5px;
+    font-family: monospace;
+    color: blue;
+
+
+}
+
+@media (max-width: 450px) {
+    
+    h2{
+        margin-top: 22px;
+    margin-left: 5px;
+        font-size: 11px;
+    }
+    #mydrop{
+        display: block;
+    }
+  
+  }
+
+  #mydrop{
+    width: 60px;
+    background: none;
+    border: none;
+    display: none;
+    
+}
+
+.tranform{
+    transition: all;
+    transition-duration: 0.6s;
+    transform: translateX(-2000px);
+}
+.againtransform{
+    transform: translateX(0px);
+}
+.sidebar{
+    position: absolute;
+   
+    top:5.2%;
+    width:200px;
+    margin-top: 20px;
+    height:max-content;
+    background-color: rgb(172, 160, 160); ;
+}
+/* button:active{
+    color: green;
+} */
+/* a:hover{
+    color: white;
+}
+li:hover{
+    background-color: black;
+    color: white; */
+
+/* li{
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 19px;
+    list-style-type: none;
+} */
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ffffff;
+    outline: none;
+}
+p{
+    padding: 12px 0;
+}
+/* Set a style for the submit button */
+/* .btn {
+    background-color: #534caf;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    opacity: 0.9;
+  
+} */
+.modifybtn:active{
+    color: purple;
+}
+#posttext{
+    width: 300px;
+    padding: 12px;
+    margin: 1px 0 22px 0;
+    border: none;
+    background: none;
+    border-bottom: 1px solid gray;
+
+}
+/* input[type=text], input[type=password] {
+    width: 300px;
+    padding: 12px;
+    margin: 1px 0 22px 0;
+    border: none;
+    background: none;
+    border-bottom: 1px solid gray;
+} */
+#Updatediv{
+    display: none;
+}
+#dropitem{
+    margin-right: 100px;
+}
+/* Style the dropdown button */
+.dropbtn {
+    background-color: none;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    border-radius: 50%;
+  }
+  
+  /* Dropdown button on hover & focus */
+  
+  .bor{
+    border: 1px solid red;
+  }
+  /* .drops{
+    margin-right: -100px !important;
+  } */
+
+#mycard{
+   
+    margin-left: 12px;
+    margin-right: 3px;
+  }
+  #mycard img{
+    width: 280px;
+    height: 230px;
+  }
+.navbar{
+    background-color: rgb(153, 154, 158)!important;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    color: white;
+    
+}
+#postStart{
+    margin-top: 20px;
+    padding-top: 30px;
+}

@@ -1,0 +1,55 @@
+.container {
+    width: 350px;
+    padding: 16px;
+    background-color: rgb(220, 221, 221);
+    margin: 0 auto;
+    margin-top: 100px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    height: 314px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 300px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: none;
+    border-bottom: 1px solid gray;
+}
+
+/* When the inputs get focus, do something */
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  
+}
+
+.btn:hover {
+    opacity:1;
+}
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #666464;
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
