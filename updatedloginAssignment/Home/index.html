@@ -34,11 +34,11 @@
             <a class="nav-link" onclick="userPost()" href="#">MyPost</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link" href="#" onclick="Myprofile()">Myprofile</a>
+            <a class="nav-link" href="#" onclick="userProfile()">Myprofile</a>
           </li>
           <div>
             <li class="nav-item dropdown d-flex">
-              <img style="width:30px; height:30px; border-radius:50%;" class="mt-0 mx-0"
+              <img style="width:30px; height:30px; border-radius:50%;" id="navimg" class="mt-0 mx-0"
                 src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0="
                 alt="" width='40px' height="40px">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -56,151 +56,61 @@
 
       </div>
   </nav>
+  <div style="margin-top: 70px; display: flex; align-items: center; flex-direction: column; width: 100%; ">
+    <div>
+    <input type="text" style="font-size: 1.3rem; width: 83%; border-right: none; border-radius: 10px; padding: 5px 0;"> <button id="postbtn" style="border-left: none; border-bottom-right-radius: 10px;border-top-right-radius: 10px; padding: 6px 20px;  padding-top: 11px; margin-left: -30px;">Post</button></div>
+   <div style="display: flex; justify-content: center; width: 100%;"> <input type="file" placeholder="AddPhoto"></div>
+  </div>
 
   <!-- As a heading -->
-
-  <div class="justify-content-center" id="postStart">
-    <div
-      style=" border: 1px solid purple; height: 120px; margin-top: 12px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-      <input id="posttext" type="text" placeholder="Write your Post ">
-      <div style="display: flex; justify-content:center; margin-top:-50px;">
-        <button id="photobtn" style="height: 40px; background-color: azure;" onclick="getPhoto()">Add Photo</button>
-        <button id="submitbtn" style="height: 40px; background-color: rgb(141, 145, 145);"
-          onclick="submitHandler()">Submit</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="users" style="display: flex ; justify-content: center; margin-top: 10px;">
-
-
-
+  <div id="main" style="display: flex; justify-content: center; align-items: center; margin-top: 100px;">
+    
 
   </div>
 
-
-  <div id="postArea" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
-
-
-
-
-  </div>
-
-  </div>
-  <div id="Updatediv">
-
-    <!-- <div
-      style="width:380px; display: flex; flex-direction:column; align-items: center; background-color: beige; margin-top: 0px;">
-      <h3 style="cursor: pointer; margin-left: 350px; font-family: Verdana, Geneva, Tahoma, sans-serif;"
-        onclick="modalClose()">X</h3>
-
-      <div style="display: flex; width: 100%; justify-content:center;">
-
-        <input id="uemail" type="text" placeholder="Enter Email" name="email" required>
-      </div>
-      <div style="display: flex; width: 100%; justify-content: center;">
-        <input id="uname" type="text" placeholder="Enter name" name="email" required>
-      </div>
-
-      <div style="display: flex; width: 100%; justify-content: center;">
-        <input id="phnum" type="text" placeholder="Phone number" name="psw" required>
-      </div>
-      <div style="display: flex; width: 100%; justify-content: center;">
-        <input id="hobby" type="text" placeholder="Hobbies" name="psw" required>
-      </div>
-      <div style="display: flex; width: 100%; justify-content: center;">
-        <input id="profpic" type="text" placeholder="Url" name="psw" required>
-      </div>
-      <div style="display: flex; width: 100%; justify-content: center;">
-        <input id="discription" type="text" placeholder="Discription" name="psw" required>
-      </div>
-
-      <button id="login" onclick="updateHandler()" type="submit" class="btn">Update</button>
-    </div> -->
-
-
-  </div>
-    <div style="margin-top: -20px;" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">My Information</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-1">
-                <label for="u-name" class="col-form-label">Name:</label>
-                <input type="text" class="form-control" id="uname" style="height: 34px;">
-              </div>
-              <div class="mb-1">
-              <label for="u-email" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" id="uemail" disabled style="height: 34px;">
+  <div style="margin-top: -20px;" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">My Information</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-1">
+              <label for="u-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="uname" style="height: 34px;">
             </div>
             <div class="mb-1">
-            <label for="u-hobby" class="col-form-label">Hobbies:</label>
-            <input type="text" class="form-control" id="hobby" style="height: 34px;" value="">
+            <label for="u-email" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="uemail" disabled style="height: 34px;">
           </div>
           <div class="mb-1">
-            <label for="u-phonenumber" class="col-form-label">Phone:</label>
-            <input type="text" class="form-control"id="phnum" style="height: 34px;" value="">
-          </div>
-          <div class="mb-1">
-            <label for="u-pic" class="col-form-label">Profile Picture:</label>
-            <input type="text" class="form-control" id="profpic" style="height: 25px;" value="">
-          </div>
-              <div class="mb-1">
-                <label for="message-text" class="col-form-label">Description:</label>
-                <textarea class="form-control" id="discription" value=""></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" id="login" onclick="updateHandler()" class="btn btn-primary">Update</button>
-          </div>
+          <label for="u-hobby" class="col-form-label">Hobbies:</label>
+          <input type="text" class="form-control" id="hobby" style="height: 34px;">
+        </div>
+        <div class="mb-1">
+          <label for="u-phonenumber" class="col-form-label">Phone:</label>
+          <input type="text" class="form-control"id="phnum" style="height: 34px;" >
+        </div>
+        <div class="mb-1">
+          <label for="u-pic" class="col-form-label">Profile Picture:</label>
+          <input type="file" class="form-control" id="profpic" style="height: 34px;" >
+        </div>
+            <div class="mb-1">
+              <label for="message-text" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="discription" ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="update"  class="btn btn-primary">Update</button>
         </div>
       </div>
     </div>
-    </div>
-
-  <div id="myprof" style="justify-content: center; margin-top: 50px; height: 500px; z-index: 0;">
-
   </div>
-
-
-
-
-
-<div id="commentmodal">
-
-
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Comment-box</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Write Comment:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="comentsubmit">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
+  
 
 
 

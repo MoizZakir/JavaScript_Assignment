@@ -3,37 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- width:100%; background-color: blueviolet; height: 100vh; background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg');background-repeat: no-repeat; background-position: center; background-size: cover; -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Josefin+Sans:wght@100&family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;  background-color: rgb(255, 255, 255); height: 100vh; width: 100%;">
-        
-<div style=" padding: 10px 20px; margin-top: -70px; display: flex; flex-direction: column; align-items:center;  width: 340px;  background-color: rgb(185, 185, 185); border-radius: 10px; box-shadow: 11px 5px 25px 0px rgba(255, 255, 255, 0.1);">
-<h2>SIGNUP</h2>
-<label for="uname"><b>Name</b></label>
-    <input id="uname" type="text" placeholder="Enter Name" name="uname" required>
+    
+  <div class="signup-container">
+    <h2>Signup</h2>
+  
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
 
-    <label for="email"><b>Email</b></label>
-    <input  id="uemail" type="email" placeholder="Enter Email" name="email" required>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
 
-    <label for="psw"><b>Password</b></label>
-    <input  id="upassword" type="password" placeholder="Enter Password" name="psw" required>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
 
-    <label for="psw_confirm"><b>Confirm Password</b></label>
-    <input  id="uconfirmpassword" type="password" placeholder="Confirm Password" name="psw_confirm" required>
-<div style="display: flex; margin: 10px auto;">
-    <button  id="signup"  type="submit" class="btn">Sign Up</button>
-    <p style="color: blue; margin: 0 3px;" >OR</p>
-    <button  id="login" onclick="loginHandler()" type="submit" class="btn">Login</button>
-</div>
-</div>
-</div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">profile Picture</label>
+        <input type="file" id="profilepic" name="confirm-password" required>
+      </div>
 
-    <script src="app.js" type="module"></script>
+      <button type="button" onclick="submitForm()">Signup</button>
+   
+  </div>
+  <script src="app.js" type="module"></script>
 </body>
 </html>

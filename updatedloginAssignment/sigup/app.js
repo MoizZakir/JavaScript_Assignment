@@ -1,99 +1,61 @@
-import { auth, db, createUserWithEmailAndPassword, setDoc,doc } from "../firebaseconfig.js"
+import { addInDBById, signUp, uploadFile } from "../utils/functions.mjs"
 
-let uname=document.getElementById('uname')
-let uemail=document.getElementById('uemail')
-let upassword=document.getElementById('upassword')
-let uconfirmpassword=document.getElementById('uconfirmpassword')
-let signup=document.getElementById('signup')
-let login=document.getElementById('login')
-
+const userName = document.querySelector('#name')
+const email = document.querySelector('#email')
+const password = document.querySelector('#password')
+const confirmPassword = document.querySelector('#confirm-password')
+const profilepic = document.querySelector('#profilepic')
 
 
-// let myUserid;
+window.submitForm = async () => {
+  let data = {
+    username: userName.value,
+    userEmail: email.value,
+  }
+  if (password.value != confirmPassword.value) {
+    return alert('password did not match')
 
-if(JSON.parse(localStorage.getItem('loggedd user '))){
-window.location='../Home/index.html'
-}
-let user=JSON.parse(localStorage.getItem('user')) || []
+  }
+  else if (password.value.length < 7) {
+    return alert('password character must be greater than 7')
+  }
+  else if (userName.value==''||
+    email.value==''||
+    password.value==''||
+    confirmPassword.value=='') {
+    return alert('Empty Fileds')
+  }
+  else {
+    const register = await signUp(email.value, password.value)
+    if (register.status) {
+      if(profilepic.files[0]){
+      const profilePictureName = `${new Date().getTime()}-${profilepic.files[0].name}`
 
-
-function signupHandler(){
-if(uname.value ==''
-    &&uemail.value ==''
-    &&upassword.value ==''
-    &&uconfirmpassword.value ==''
-    ){
-        return alert('please fill all feild ')
+      const upload = await uploadFile(profilepic.files[0], profilePictureName)
+      if (upload.status) {
+        data.profilePicture = upload.downloadURL
+        alert(upload.message)
+      } else {
+        alert(upload.message)
+      }
     }
-if (uconfirmpassword.value !=upassword.value)return alert('Confirm Password doesnt match')
 
-if(upassword.value.length<=7) return alert('password must be atleats 6 character ')
-
-
-
-else{
-
-
-    createUserWithEmailAndPassword(auth, uemail.value, upassword.value)
-  .then(async(userCredential) => {
-    // Signed up 
-    const user = await userCredential.user;
-    // myUserid=user.uid
-    alert('sigupSuccefully')
-    console.log(user)
-
-
-
-
-    await setDoc(doc(db, "user", user.uid), {
-      userName:uname.value
-      ,userEmail:uemail.value
-    });
-  
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert(errorMessage)
-
-    // ..
-  });
-
- 
-
-
-
-
-// let mydata={
-
-//     userPassword:upassword.value
-//     ,userConfirmPassword:uconfirmpassword.value,
-  
-//     picurl:' ',
-//     decr:' ',
-//     hobbies:' ',
-//     phone:' '
-//     }
-    // console.log(user)
-    // user.push(mydata)
-    // localStorage.setItem('user',JSON.stringify(user))
-    // alert('SignUp Succesfully Now You have Login Form')
     
-    // setTimeout(()=>{window.location='../Login/index.html'},2000)
 
-}  }
 
-function loginHandler(){
-    if(JSON.parse(localStorage.getItem('user'))){
-    window.location='../Login/index.html'}
-    else{
-        alert('Create Account First')
+    const userAddInDB = await addInDBById(data, register.data.user.uid, "users")
+
+    if (userAddInDB.status) {
+      alert(userAddInDB.message)
+      alert(register.message)
+      window.location = "../Home/index.html"
+    } else {
+      alert(userAddInDB.message)
     }
+  }
+  else{
+    alert(register.message)
+  }
+
+  }
 }
-
-signup.addEventListener('click',signupHandler)
-
-login.addEventListener('click',()=>{
-  window.location='../Login/index.html'
-})

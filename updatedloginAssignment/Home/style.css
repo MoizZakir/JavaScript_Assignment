@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+#postbtn:hover{
+    background-color: cornflowerblue;
+    color: white;
+}
 /* img{
     border-radius: 50%;
     margin-left: 5px;
