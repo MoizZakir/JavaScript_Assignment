@@ -64,6 +64,9 @@ h2{
     height:max-content;
     background-color: rgb(172, 160, 160); ;
 }
+.navbar{
+    position: fixed !important;
+}
 /* button:active{
     color: green;
 } */

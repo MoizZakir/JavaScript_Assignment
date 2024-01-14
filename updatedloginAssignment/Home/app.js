@@ -1,4 +1,4 @@
-import { getData, getLoggedInUser, logout, updateData, uploadFile } from "../utils/functions.mjs";
+import { addInDB, getAllDataOrderedByTimestamp, getData, getLoggedInUser, logout, updateData, uploadFile } from "../utils/functions.mjs";
 
 // let userId;
 // let count=1;
@@ -22,6 +22,10 @@ let logoutbtn=document.querySelector('#logout');
 let navimg=document.querySelector('#navimg');
 let main=document.querySelector('#main');
 let update=document.querySelector('#update');
+let posttext =document.querySelector('#posttext');
+let postimg =document.querySelector('#postimg');
+let postbtn =document.querySelector('#postbtn');
+let postArea =document.querySelector('#postArea');
 let postman;
 
 let uid;
@@ -162,13 +166,112 @@ const userProfileUpdateHandler= async()=>{
 update.addEventListener('click',userProfileUpdateHandler)
 
 
-const postSubmitHandler=()=>{
-  let postData={}
+const postSubmitHandler= async()=>{
+  if (!posttext.value) {
+    alert("Please enter post")
+    return
+  }
+  const data = {
+    post: posttext.value,
+    authorId: uid,
+  }
+  if (postimg.files[0]){
+    const imageName = `${new Date().getTime()}-${postimg.files[0].name}`
+    const upload = await uploadFile(postimg.files[0], imageName)
+    if (upload.status) {
+      data.imageUrl = upload.downloadURL
+      alert(upload.message)
+    } else {
+      alert(upload.message)
+    }
+  }
+  const postAddInDB = await addInDB(data, "posts")
+  if (postAddInDB.status) {
+    alert(postAddInDB.message)
+    posttext.value = ""
+    postimg.value = ""
+    // postDisplayHandler()
+  } else {
+    alert(postAddInDB.message)
+  }
+  }
+postbtn.addEventListener('click',postSubmitHandler)
+
+let a= []
+
+const postDisplayHandler=async ()=>{
+  postArea.innerHTML=``
+  let allPost;
+
+  const postData= await getAllDataOrderedByTimestamp('posts')
+  if(postData.status){
+    allPost=postData.data
+    console.log(allPost)
+  }
+  else{
+    console.log(postData.message)
+  }
+  
+  allPost.forEach(async(e)=>{
+    let b={}
+    b.post=e.post
+    b.userDetail= (await getData(e.authorId,'users')).data
+    b.imageUrl=e.imageUrl
+    a.push(b)
+  })
+  console.log(a)
+  // console.log(a[0])
+
+  
+ 
+ 
+ 
+
+  // a.forEach((e)=>{
+  //   console.log(e.userDetail.username)
+  //   postArea.innerHTML+=`<div class="post-card">
+  //   <div class="post-header" style="display: flex; justify-content: space-between;">
+  //     <div>
+  //     <img src="https://placekitten.com/40/40" alt="User Avatar" class="post-avatar">
+  //     <strong>${e.userDetail.username}</strong> posted a status
+  //   </div>
+     
+  //       <div style="" class="dropdown">
+  //         <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style=background:none>
+            
+  //         </button>
+  //         <ul class="dropdown-menu">
+  //        <li style=' margin:10px 5px;'> <button class='modifybtn' style='background:none; border:none; ' ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+  //         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+  //       </svg>Edit</button></li>
+  //       <li style=' margin:10px 5px;'><button class='modifybtn' id='del' style='background:none; border:none; '><i class="fa fa-trash"  style='font-size:1.4rem;' aria-hidden="true"></i> Delete</button> </li>
+  //         </ul>
+  //       </div>
+  //   </div>
+  //   <div class="post-content">
+  //     <p>This is the content of the post. It can contain text, images, or any other media.
+        
+  //     </p>
+  //     <img src="https://firebasestorage.googleapis.com/v0/b/myfirsttest-1868f.appspot.com/o/1705222200937-WIN_20220919_07_28_19_Pro.jpg?alt=media&token=71cf6152-8a6f-4c40-8be4-14e6470090a" style="width: 100%;" height="200px"  alt="">
+      
+  //   </div>
+   
+  // </div>`
+
+
+
+
+  // })
+
+
+}
+
+postDisplayHandler()
   
 
 
 
-}
+
 
 
 
