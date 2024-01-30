@@ -48,7 +48,7 @@
   </style>
 </head>
 
-<body >
+<body style="overflow-y: scroll;" >
 
   <!-- As a link -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary ">
@@ -65,7 +65,7 @@
             <a id="home" onclick="displayHandler()" class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link" onclick="userPost()" href="#">MyPost</a>
+            <a class="nav-link" onclick="MypostRender()" href="#">MyPost</a>
           </li>
           <li class="nav-item me-5">
             <a class="nav-link" href="#" onclick="userProfile()">Myprofile</a>
@@ -149,7 +149,9 @@
 
 
 <div id="postArea" class="container">
-  <div class="post-card">
+  <div style="display: flex; justify-content: center;">
+  <h5>Wait ...</h5></div>
+  <!-- <div class="post-card">
     <div class="post-header" style="display: flex; justify-content: space-between;">
       <div>
       <img src="https://placekitten.com/40/40" alt="User Avatar" class="post-avatar">
@@ -176,7 +178,7 @@
       
     </div>
    
-  </div>
+  </div> -->
 
 </div>
 
